@@ -6,7 +6,7 @@
     <a class="btn btn-primary" href="{{ route('admin.projects.create') }}">Crea</a>
     
     @if (session('message'))
-        <div class="alert alert-success">
+        <div class="alert alert-success m-2">
             {{ session('message') }}
         </div>
     @endif
