@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
+            //si collega al titolo in questo caso, è seo friendly, invece di vedere un numero nell'url vediamo il nome
             $table->string('slug')->unique();
             $table->timestamps();
         });

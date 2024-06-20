@@ -1,9 +1,15 @@
 @extends('layouts.admin')
 
 @section('content')
+    <h6>INDEX di PROJECTS</h6>
+    {{-- i bottoni dentro il form --}}
+    <a class="btn btn-primary" href="{{ route('admin.projects.create') }}">Crea</a>
     
-        <h6>INDEX di PROJECTS</h6>
-    
+    @if (session('message'))
+        <div class="alert alert-success">
+            {{ session('message') }}
+        </div>
+    @endif
 
     <div class="container">
         <h1>Progetti</h1>
@@ -23,9 +29,26 @@
                         <td>{{ $project->id }}</td>
                         <td>{{ $project->title }}</td>
                         <td>{{ $project->description }}</td>
-                        <td>{{ $project->slug }}</td>
+                        <td> <a class="btn btn-outline-success"
+                                href="{{ route('admin.projects.show', ['project' => $project->slug]) }}">Dettagli</a></td>
                         <td>
                             <!-- Pulsanti -->
+                            <div class="d-flex">
+
+                                <a type="button" class="btn btn-outline-primary btn-sm me-2">
+                                    <i class="fa-solid fa-pen"></i>
+                                </a>
+                                <!-- Button trigger modal -->
+                                <form action="{{ route('admin.projects.destroy', ['project' => $project->slug]) }}"
+                                    method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-outline-danger btn-sm me-2" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                 @endforeach
