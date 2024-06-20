@@ -14,7 +14,7 @@
                 <textarea name="description" class="form-control" id="description" required></textarea>
             </div>
             <div class="my-3">
-                <button type="submit" class="btn btn-primary">Crea</button>
+                <button type="submit" class="btn btn-success">Crea</button>
             </div>
         </form>
     </div>

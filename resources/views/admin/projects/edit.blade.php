@@ -1,7 +1,8 @@
 @extends('layouts.admin')
 @section('content')
 <div class="container">
-    <h1>Modifica un nuovo Progetto</h1>
+    <h1>Modifica:</h1>
+        <h3>{{$project->title}}</h3>
     <form action="{{ route('admin.projects.update', ['project' => $project->slug]) }}" method="POST">
         @csrf
         @method('PUT')
@@ -11,12 +12,10 @@
         </div>
         <div class="form-group">
             <label for="description">Descrizione</label>
-            <textarea name="description" class="form-control" id="description" required>
-            {{$project->description}}
-            </textarea>
+            <textarea name="description" class="form-control" id="description" required>{{$project->description}}</textarea>
         </div>
         <div class="my-3">
-            <button type="submit" class="btn btn-primary">Crea</button>
+            <button type="submit" class="btn btn-success">Crea</button>
         </div>
     </form>
 </div>
