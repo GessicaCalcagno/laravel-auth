@@ -4,7 +4,7 @@
     <h6>INDEX di PROJECTS</h6>
     {{-- i bottoni dentro il form --}}
     <a class="btn btn-primary" href="{{ route('admin.projects.create') }}">Crea</a>
-    
+
     @if (session('message'))
         <div class="alert alert-success m-2">
             {{ session('message') }}
@@ -34,8 +34,8 @@
                         <td>
                             <!-- Pulsanti -->
                             <div class="d-flex">
-
-                                <a type="button" class="btn btn-outline-primary btn-sm me-2">
+                                {{-- MODIFICA --}}
+                                <a href="{{route('admin.projects.edit', ['project'=>$project->slug])}}" type="button" class="btn btn-outline-primary btn-sm me-2">
                                     <i class="fa-solid fa-pen"></i>
                                 </a>
                                 <!-- Button trigger modal -->
@@ -43,6 +43,7 @@
                                     method="POST">
                                     @csrf
                                     @method('DELETE')
+                                    {{-- CANCELLA --}}
                                     <button type="submit" class="btn btn-outline-danger btn-sm me-2" data-bs-toggle="modal"
                                         data-bs-target="#exampleModal">
                                         <i class="fa-solid fa-trash"></i>
